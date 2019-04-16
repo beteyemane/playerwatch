@@ -1,36 +1,26 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import axios from 'axios'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import Home from './components/Home'
 import './style.scss'
 
 class App extends React.Component{
   constructor() {
     super()
-    this.state = {
-      movies: []
-    }
-  }
 
-  componentDidMount(){
-    axios.get('https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup', {
-      params: {
-        term: '',
-        country: ''
-      },
-      headers: {
-        'X-RapidAPI-Host': `${process.env.UTELLY_HOST}`,
-        'X-RapidAPI-Key': `${process.env.UTELLY_KEY}`
-      }
-    })
-      .then(res => {
-        this.setState({movies: res.data})
-      })
   }
 
   render(){
-    console.log(this.state.movies)
     return(
-      <h1>Playerwatch</h1>
+      <div>
+        <BrowserRouter>
+          <main>
+            <Switch>
+              <Route path="/" component={Home} />
+            </Switch>
+          </main>
+        </BrowserRouter>
+      </div>
     )
   }
 }
