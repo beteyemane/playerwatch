@@ -9,13 +9,17 @@ class Home extends React.Component{
       movies: []
     }
     this.handleChange = this.handleChange.bind(this)
-    this.getMovies = this.getMovies.bind(this)
   }
 
-  getMovies() {
+  handleChange(e) {
+    e.preventDefault()
+    this.setState({search: e.target.value})
+    console.log('HANDLE CHANGE FUNC')
+
+    //search is empty
     axios.get('https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup', {
       params: {
-        term: this.state.search,
+        term: e.target.value,
         country: 'uk'
       },
       headers: {
@@ -27,12 +31,6 @@ class Home extends React.Component{
         this.setState({movies: res.data.results})
       })
       .catch(err => console.log(err))
-  }
-
-  handleChange(e) {
-    e.preventDefault()
-    this.setState({search: e.target.value})
-    this.getMovies()
   }
 
 
