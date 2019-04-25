@@ -14,17 +14,14 @@ class Home extends React.Component{
   handleChange(e) {
     e.preventDefault()
     this.setState({search: e.target.value})
-    console.log('HANDLE CHANGE FUNC')
-
-    //search is empty
     axios.get('https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup', {
       params: {
         term: e.target.value,
         country: 'uk'
       },
       headers: {
-        'X-RapidAPI-Key': `${process.env.UTELLY_KEY}`,
-        'X-RapidAPI-Host': `${process.env.UTELLY_HOST}`
+        'X-RapidAPI-Key': '18e69f1023mshc52a0e3532b65e9p1781e4jsn85d9e7bd722c',
+        'X-RapidAPI-Host': 'utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com'
       }
     })
       .then(res => {
@@ -33,10 +30,7 @@ class Home extends React.Component{
       .catch(err => console.log(err))
   }
 
-
   render(){
-    console.log('movies', this.state.movies)
-    console.log('search', this.state.search)
     return(
       <section>
         <h1>Playerwatch</h1>
