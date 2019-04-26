@@ -1,5 +1,7 @@
 import React from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
+import MoviesShow from './MoviesShow'
 
 class Home extends React.Component{
   constructor() {
@@ -40,7 +42,8 @@ class Home extends React.Component{
           placeholder="Search..."
           value={this.state.search}
           onChange={this.handleChange}/>
-        {this.state.movies.map(movie => <div key={movie.id}> <h3>{movie.name}</h3> </div>)}
+        {this.state.movies.map(movie => <div key={movie.id}> <Link to={`/movies/${movie.name}`}> <h3>{movie.name}</h3> </Link>
+        </div>)}
       </section>
     )
   }

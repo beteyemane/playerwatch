@@ -12,7 +12,7 @@ class MoviesShow extends React.Component{
   componentDidMount(){
     axios.get('https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup', {
       params: {
-        term: '',
+        term: `${this.props.match.params.id}`,
         country: 'uk'
       },
       headers: {
@@ -21,16 +21,26 @@ class MoviesShow extends React.Component{
       }
     })
       .then(res => {
-        this.setState({movies: res.data})
+        this.setState({movies: res.data.results})
       })
       .catch(err => console.log(err))
   }
 
   render(){
+    if (!this.state.movies[0]) return null
+    console.log(this.state.movies[0])
+    const { name, picture, locations } = this.state.movies[0]
     return(
-      <section>
-        <h1>Movies Show!</h1>
-      </section>
+      <div>
+        <h1>{name}</h1>
+        <img src={picture} alt={name} height="300px"/>
+        {locations.map(location =>
+          <div key={location.id}>
+            <a href={location.url}>
+              <p>{location.display_name}</p><
+            /a>
+          </div>)}
+      </div>
     )
   }
 
