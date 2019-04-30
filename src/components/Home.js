@@ -22,8 +22,7 @@ class Home extends React.Component{
         country: 'uk'
       },
       headers: {
-        'X-RapidAPI-Key': '18e69f1023mshc52a0e3532b65e9p1781e4jsn85d9e7bd722c',
-        'X-RapidAPI-Host': 'utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com'
+
       }
     })
       .then(res => {
@@ -32,18 +31,24 @@ class Home extends React.Component{
       .catch(err => console.log(err))
   }
 
+
   render(){
     return(
       <section>
         <h1>Playerwatch</h1>
+        <p>Check where a tv show or movie is available to watch</p>
         <input
           type="text"
           className="input"
           placeholder="Search..."
           value={this.state.search}
           onChange={this.handleChange}/>
-        {this.state.movies.map(movie => <div key={movie.id}> <Link to={`/movies/${movie.name}`}> <h3>{movie.name}</h3> </Link>
-        </div>)}
+        {this.state.movies.map(movie =>
+          <div className="search-movies" key={movie.id}>
+            <Link to={`/movies/${movie.name}`}>
+              <p>{movie.name}</p>
+            </Link>
+          </div>)}
       </section>
     )
   }

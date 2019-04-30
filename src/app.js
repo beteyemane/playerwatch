@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import Home from './components/Home'
 import MoviesShow from './components/MoviesShow'
+import NavbarComponent from './components/common/NavbarComponent'
 import './style.scss'
 
 class App extends React.Component{
@@ -16,6 +17,7 @@ class App extends React.Component{
       <div>
         <BrowserRouter>
           <main>
+            <NavbarComponent />
             <Switch>
               <Route path="/movies/:id" component={MoviesShow}/>
               <Route path="/" component={Home}/>
