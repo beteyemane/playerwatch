@@ -22,8 +22,8 @@ class Home extends React.Component{
         country: 'uk'
       },
       headers: {
-        'X-RapidAPI-Key': 'e96d072e1emsh943819d8478278ep1547eejsn4113ee38e491',
-        'X-RapidAPI-Host': 'utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com'
+        'X-RapidAPI-Key': `${process.env.UTELLY_KEY}`,
+        'X-RapidAPI-Host': `${process.env.UTELLY_HOST}`
       }
     })
       .then(res => {
