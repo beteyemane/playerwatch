@@ -16,8 +16,8 @@ class MoviesShow extends React.Component{
         country: 'uk'
       },
       headers: {
-        'X-RapidAPI-Key': '18e69f1023mshc52a0e3532b65e9p1781e4jsn85d9e7bd722c',
-        'X-RapidAPI-Host': 'utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com'
+        'X-RapidAPI-Key': `${process.env.UTELLY_KEY}`,
+        'X-RapidAPI-Host': `${process.env.UTELLY_HOST}`
       }
     })
       .then(res => {
@@ -31,16 +31,18 @@ class MoviesShow extends React.Component{
     console.log(this.state.movies[0])
     const { name, picture, locations } = this.state.movies[0]
     return(
-      <div>
+      <section className="movie-show">
         <h1>{name}</h1>
         <img src={picture} alt={name} height="300px"/>
-        {locations.map(location =>
-          <div key={location.id}>
-            <a href={location.url}>
-              <p>{location.display_name}</p><
-            /a>
-          </div>)}
-      </div>
+        <div className="location">
+          {locations.map(location =>
+            <div key={location.id}>
+              <a href={location.url}>
+                <p>{location.display_name}</p><
+              /a>
+            </div>)}
+        </div>
+      </section>
     )
   }
 

@@ -2,7 +2,7 @@
   box-sizing: border-box;
   font-family: 'Righteous', cursive;
 }
-section {
+.home {
   background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.8)), url('https://i.ytimg.com/vi/IsMRioOpZrY/maxresdefault.jpg');
   background-position: center;
   background-repeat: no-repeat;
@@ -42,6 +42,28 @@ section {
       text-decoration: none;
       color: #000;
       cursor: pointer;
+    }
+  }
+}
+
+.movie-show {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .location {
+    display: flex;
+    flex-direction: row;
+    p {
+      padding: 5px;
+      margin: 10px;
+      border: 1px solid black;
+      border-radius: 10px;
+      background-color: black;
+      color: white;
+    }
+    p:hover {
+      background-color: white;
+      color: black;
     }
   }
 }

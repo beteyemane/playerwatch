@@ -22,7 +22,8 @@ class Home extends React.Component{
         country: 'uk'
       },
       headers: {
-
+        'X-RapidAPI-Key': 'e96d072e1emsh943819d8478278ep1547eejsn4113ee38e491',
+        'X-RapidAPI-Host': 'utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com'
       }
     })
       .then(res => {
@@ -34,7 +35,7 @@ class Home extends React.Component{
 
   render(){
     return(
-      <section>
+      <section className="home">
         <h1>Playerwatch</h1>
         <p>Check where a tv show or movie is available to watch</p>
         <input
